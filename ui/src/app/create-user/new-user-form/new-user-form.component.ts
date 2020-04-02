@@ -4,21 +4,20 @@ import { FormGroup, FormControl } from '@angular/forms';
 @Component({
 	selector: 'app-new-user-form',
 	templateUrl: './new-user-form.component.html',
-	styleUrls: ['./new-user-form.component.scss']
+	styleUrls: ['./new-user-form.component.scss'],
 })
 export class NewUserFormComponent implements OnInit {
+	newUserForm: FormGroup;
+	userNameControl: FormControl = new FormControl('');
+	passphraseControl: FormControl = new FormControl('');
+	default = 'hello';
 
-	newUserForm :FormGroup = new FormGroup({
-		userName: new FormControl(''),
-		passPhrase: new FormControl('')
-	});
-
-	constructor() { }
-
-	ngOnInit(): void {
-		this.newUserForm.controls.userName.valueChanges.subscribe( x => {
-			console.log("value", x);
+	constructor() {
+		this.newUserForm = new FormGroup({
+			userName: this.userNameControl,
+			passPhrase: this.passphraseControl,
 		});
 	}
 
+	ngOnInit(): void {}
 }
