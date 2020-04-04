@@ -2,10 +2,21 @@
 	<h2>
 		Register
 	</h2>
-	<form [formGroup]="newUserForm" >
+	<form [formGroup]="newUserForm">
 		<label for="unamefield">Pick a username</label>
-		<input type="text" name="username" id="unamefield" formControlName="userName"/>
+		<input
+			type="text"
+			name="username"
+			id="unamefield"
+			formControlName="userName"
+		/>
 		<label for="pwfield">Password</label>
-		<input type="password" name="password" id="pwfield" formControlName="passPhrase"/>
+		<input
+			type="password"
+			name="password"
+			id="pwfield"
+			formControlName="passPhrase"
+		/>
 	</form>
+	<button (click)="verifyUser($event)">Verify user</button>
 </div>
