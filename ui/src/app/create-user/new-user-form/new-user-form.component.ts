@@ -11,7 +11,8 @@ export class NewUserFormComponent implements OnInit {
 	newUserForm: FormGroup;
 	userNameControl: FormControl = new FormControl('');
 	passphraseControl: FormControl = new FormControl('');
-	default = 'hello';
+
+	used: Boolean;
 
 	constructor(private userService: UserService) {
 		this.newUserForm = new FormGroup({
@@ -25,6 +26,6 @@ export class NewUserFormComponent implements OnInit {
 	verifyUser(event) {
 		this.userService
 			.checkUsedUsername(this.userNameControl.value)
-			.then(x => console.log('response for user', x));
+			.then(x => (this.used = x));
 	}
 }

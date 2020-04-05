@@ -8,10 +8,6 @@ export class UserService {
 	constructor(private httpService: HttpService) {}
 
 	public checkUsedUsername(userName: String): Promise<Boolean> {
-		return this.httpService.post(
-			'/user/checkUserName',
-			{ username: userName, pass_phrase: '' },
-			{ withCredentials: true }
-		);
+		return this.httpService.get(`/user/checkUserName?username=${userName}`);
 	}
 }
