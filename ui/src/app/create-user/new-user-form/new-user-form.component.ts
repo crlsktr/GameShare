@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from 'src/services/user.service';
+import LoginUser from 'src/services/models/LoginUser';
 
 @Component({
 	selector: 'app-new-user-form',
@@ -13,6 +14,7 @@ export class NewUserFormComponent implements OnInit {
 	passphraseControl: FormControl = new FormControl('');
 
 	used: Boolean;
+	created: Boolean;
 
 	constructor(private userService: UserService) {
 		this.newUserForm = new FormGroup({
@@ -27,5 +29,16 @@ export class NewUserFormComponent implements OnInit {
 		this.userService
 			.checkUsedUsername(this.userNameControl.value)
 			.then(x => (this.used = x));
+	}
+
+	submitNewUser(event) {
+		let user: LoginUser = {
+			username: this.userNameControl.value,
+			pass_phrase: this.passphraseControl.value,
+		};
+		this.userService
+			.createUser(user)
+			.then(x => (this.created = x))
+			.catch(() => (this.created = false));
 	}
 }

@@ -2,10 +2,10 @@ use rocket::Route;
 use serde::Deserialize;
 use rocket_contrib::json::{Json};
 
-#[derive(FromForm, Deserialize)]
+#[derive(FromForm, Deserialize, Debug)]
 struct LoginUser{
-	_username: String,
-	_pass_phrase: String,
+	username: String,
+	pass_phrase: String,
 }
 
 #[get("/checkUserName?<username>")]
@@ -20,6 +20,12 @@ fn check_username(username : Option<String>) ->  Json<bool>{
 	Json(false)
 }
 
+#[post("/createUser", format = "json", data="<user>")]
+fn create_user(user :Json<LoginUser>) -> Json<bool>{
+	println!("received user: {:?}", user);
+	Json(true)
+}
+
 pub fn get_user_routes() -> Vec<Route>{
-	routes![check_username]
+	routes![check_username,create_user]
 }

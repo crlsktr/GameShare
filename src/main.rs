@@ -12,27 +12,6 @@ use models::User;
 mod controllers;
 use controllers::get_user_routes;
 
-// mod config;
-// use config::get_config;
-
-// #[get("/")]
-// fn index() -> String {
-// 	format!(r#"Hi {:?}"#, get_config())
-// }
-
-#[get("/default")]
-fn get_default_user() -> Option<Json<User>>{
-	let user = User{ id: 0, name: "hi".to_string()};
-	
-	Some(Json(user))
-}
-
-#[get("/sec")]
-fn get_sec() -> Option<Json<User>>{
-	let user = User { id: 1, name: "bye".to_string()};
-	Some(Json(user))
-}
-
 fn main() {
 	// let my_user = User{ id: 0, name: "hi".to_string()};
 	// println!("{}",format!("user: {:?}", my_user));
