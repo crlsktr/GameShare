@@ -2,12 +2,7 @@
 #[macro_use] extern crate rocket;
 
 // use rocket::response::content;
-use rocket_contrib::json::{ Json };
 use rocket_contrib::serve::StaticFiles;
-
-
-mod models;
-use models::User;
 
 mod controllers;
 use controllers::get_user_routes;
