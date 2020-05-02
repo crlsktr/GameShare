@@ -1,5 +1,5 @@
 [package]
-name = "GameShare"
+name = "game_share"
 version = "0.1.0"
 authors = ["crlsktr <crlsktr@gmail.com>"]
 edition = "2018"
