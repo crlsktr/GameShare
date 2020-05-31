@@ -22,7 +22,7 @@ fn check_username(username : Option<String>) ->  Json<bool>{
 
 #[post("/createUser", format = "json", data="<user>")]
 fn create_user(user :Json<LoginUser>) -> Json<bool>{
-	println!("received user: {:?}", user);
+	println!("{:?}", user);
 	Json(true)
 }
 

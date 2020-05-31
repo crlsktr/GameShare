@@ -10,11 +10,8 @@ mod controllers;
 use controllers::{get_user_routes,get_game_routes};
 
 fn main() {
-	// let my_user = User{ id: 0, name: "hi".to_string()};
-	// println!("{}",format!("user: {:?}", my_user));
 	dotenv().ok();
 	let mut main_rocket = rocket::ignite()
-		// .mount("/", routes![index,get_user])
 		.mount("/user", get_user_routes())
 		.mount("/game", get_game_routes())
 		.mount("/", StaticFiles::from("static/"));
