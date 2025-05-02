@@ -1,0 +1,21 @@
+FROM denoland/deno:latest
+
+WORKDIR /usr/src/gameshare
+
+COPY package.json package.json
+COPY deno.lock deno.lock
+RUN deno install
+
+COPY .storybook .storybook
+COPY .sveltekit .sveltekit
+COPY e2e e2e
+COPY eslint.config.js eslint.config.js
+COPY playwright.config.ts playwright.config.ts
+COPY svelte.config.js svelte.config.js
+COPY tsconfig.json tsconfig.json
+COPY vite.config.ts vite.config.ts
+COPY vitest-setup-client.ts vitest-setup-client.ts
+COPY static static
+COPY src src
+
+CMD ["deno", "run", "dev", "--host"]

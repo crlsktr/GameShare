@@ -1,0 +1,14 @@
+FROM rust:slim
+WORKDIR /usr/src/gameshare
+
+COPY Cargo.toml Cargo.toml
+COPY Cargo.lock Cargo.lock
+COPY src src
+
+RUN cargo install --path .
+
+
+ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_PORT=80
+
+CMD ["boardgamesharing"]

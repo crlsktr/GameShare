@@ -1,0 +1,15 @@
+services:
+  backend:
+    build: backend
+    env_file:
+      - config/backend.env
+    ports:
+      - "4000:80"
+  ui:
+    build: ui
+    env_file:
+      - config/ui.env
+    ports:
+      - "4001:5173"
+    links:
+      - backend
